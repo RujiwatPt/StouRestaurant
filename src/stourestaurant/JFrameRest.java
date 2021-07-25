@@ -9,6 +9,8 @@ import formManagement.BillManagement;
 import formManagement.FoodManagement;
 import formManagement.MemberManagement;
 import formManagement.StaffManagement;
+import formManagement.TableManagement;
+import formManagement.OrderManagement;
 import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
@@ -59,10 +61,13 @@ public class JFrameRest extends javax.swing.JFrame {
         menuFood = new javax.swing.JMenuItem();
         menuMember = new javax.swing.JMenuItem();
         menuStaff = new javax.swing.JMenuItem();
+        menuTable = new javax.swing.JMenuItem();
+        menuOrder = new javax.swing.JMenuItem();
         menuBill = new javax.swing.JMenuItem();
         menuExit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ระบบจัดการร้านอาหาร");
 
         javax.swing.GroupLayout myDesktopLayout = new javax.swing.GroupLayout(myDesktop);
         myDesktop.setLayout(myDesktopLayout);
@@ -100,6 +105,22 @@ public class JFrameRest extends javax.swing.JFrame {
             }
         });
         menuManagement.add(menuStaff);
+
+        menuTable.setText("Table");
+        menuTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuTableActionPerformed(evt);
+            }
+        });
+        menuManagement.add(menuTable);
+
+        menuOrder.setText("Order");
+        menuOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOrderActionPerformed(evt);
+            }
+        });
+        menuManagement.add(menuOrder);
 
         menuBill.setText("Bill");
         menuBill.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +196,22 @@ public class JFrameRest extends javax.swing.JFrame {
         foodPage.toFront();
     }//GEN-LAST:event_menuFoodActionPerformed
 
+    private void menuTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTableActionPerformed
+        // TODO add your handling code here:
+        TableManagement tablePage = new TableManagement();
+        tablePage.setVisible(true);
+        myDesktop.add(tablePage);
+        tablePage.toFront();
+    }//GEN-LAST:event_menuTableActionPerformed
+
+    private void menuOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOrderActionPerformed
+        // TODO add your handling code here:
+        OrderManagement orderPage = new OrderManagement();
+        orderPage.setVisible(true);
+        myDesktop.add(orderPage);
+        orderPage.toFront();
+    }//GEN-LAST:event_menuOrderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,7 +254,9 @@ public class JFrameRest extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuFood;
     private javax.swing.JMenu menuManagement;
     private javax.swing.JMenuItem menuMember;
+    private javax.swing.JMenuItem menuOrder;
     private javax.swing.JMenuItem menuStaff;
+    private javax.swing.JMenuItem menuTable;
     private javax.swing.JDesktopPane myDesktop;
     // End of variables declaration//GEN-END:variables
 }

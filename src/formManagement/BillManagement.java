@@ -613,7 +613,7 @@ public Double bHeight = 0.0;
 
             lbFood.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
             lbFood.setLabelFor(txtFoodID);
-            lbFood.setText("รหัสอาหาร :");
+            lbFood.setText("ชื่ออาหาร :");
 
             lbAmount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
             lbAmount.setLabelFor(txtAmount);
@@ -747,6 +747,9 @@ public Double bHeight = 0.0;
 
         private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {
             // TODO add your handling code here: 
+             if (JOptionPane.showConfirmDialog(this, "ยืนยันการพิมพ์ใบเสร็จ", "ยืนยัน",
+                JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_NO_OPTION) {
+       
             PrinterJob pj = PrinterJob.getPrinterJob();
             pj.setPrintable(new BillPrintable(), getPageFormat(pj));
             try {
@@ -756,7 +759,7 @@ public Double bHeight = 0.0;
                 ex.printStackTrace();
             }
         }
-
+ }
         private void txtReceiveKeyReleased(java.awt.event.KeyEvent evt) {
             // TODO add your handling code here:
             int receive = parseInt(txtReceive.getText());
