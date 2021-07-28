@@ -19,7 +19,7 @@ public class MyConnect {
         Connection conn = null;
         try {
             Class.forName(com.mysql.cj.jdbc.Driver.class.getName());
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/stourestaurant", "user", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/stourestaurant", "root", "12345678");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

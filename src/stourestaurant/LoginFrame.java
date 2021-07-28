@@ -6,6 +6,9 @@
 package stourestaurant;
 ;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import static stourestaurant.JFrameRest.f2;
@@ -15,6 +18,7 @@ import static stourestaurant.JFrameRest.f2;
  * @author Jin
  */
 public class LoginFrame extends javax.swing.JFrame {
+ private Connection conn = MyConnect.getConnection();
 String user,password;
     /**
      * Creates new form LoginFrame
@@ -57,7 +61,7 @@ String user,password;
         setTitle("ระบบยืนยันตัวตน");
 
         headerBill.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        headerBill.setText("ระบบยืนยันตัวตน");
+        headerBill.setText("เข้าสู่ระบบร้านอาหาร");
 
         lbPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbPassword.setLabelFor(txtPassword);
@@ -82,13 +86,12 @@ String user,password;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(headerBill)
-                .addContainerGap(276, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(357, 357, 357))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lbPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -96,11 +99,11 @@ String user,password;
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                            .addComponent(txtPassword))
-                        .addGap(191, 191, 191))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(357, 357, 357))))
+                            .addComponent(txtPassword)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(headerBill)))
+                        .addGap(191, 191, 191))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,16 +130,34 @@ String user,password;
         // TODO add your handling code here:
         String user = txtUsername.getText().trim();
         String pass = String.valueOf(txtPassword.getPassword());
-        if(user.equals("username") && pass.equals("password")){
-            JOptionPane.showMessageDialog(this, "เข้าสู่ระบบสำเร็จ", "ผลการยืนยันตัวตน", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
-            JFrameRest frameRest = new JFrameRest();
-            frameRest.setLocationRelativeTo(null);
-            frameRest.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "การยืนยันตัวตนล้มเหลว", "ผลการยืนยันตัวตน", JOptionPane.INFORMATION_MESSAGE);
-            System.out.println(user);
-            System.out.println(pass);
+//        if(user.equals("username") && pass.equals("password")){
+//            JOptionPane.showMessageDialog(this, "เข้าสู่ระบบสำเร็จ", "ผลการยืนยันตัวตน", JOptionPane.INFORMATION_MESSAGE);
+//            dispose();
+//            JFrameRest frameRest = new JFrameRest();
+//            frameRest.setLocationRelativeTo(null);
+//            frameRest.setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "การยืนยันตัวตนล้มเหลว", "ผลการยืนยันตัวตน", JOptionPane.INFORMATION_MESSAGE);
+//            System.out.println(user);
+//            System.out.println(pass);
+//        }
+ String sql = " SELECT * FROM tb_staff WHERE `staff_id` = '" + user + "' and `staff_phone` = '" + pass + "'";
+        try {
+            ResultSet rs = conn.createStatement().executeQuery(sql);
+            if(rs.next())
+            {
+                JOptionPane.showMessageDialog(null, "Login Successfull", "Login Success", 1);
+                    //home mf = new home();
+                JFrameRest manageFrame = new JFrameRest();
+                manageFrame.setLocationRelativeTo(null);
+                manageFrame.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Incorrect Username Or Password", "Login Failed", 2);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
