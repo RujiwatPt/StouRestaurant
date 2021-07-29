@@ -845,7 +845,7 @@ public Double bHeight = 0.0;
                         g2d.drawString("-------------------------------------", 10, y);
                         y += yShift;
 
-                        g2d.drawString(" " + b.getFoodName() + "  *  " + b.getAmount() +"                 " + b.getPrice(), 10, y);
+                        g2d.drawString(" " + b.getFoodName() + "  *  " + b.getAmount() +"            " + b.getPrice(), 10, y);
                         y += headerRectHeight;
 //                        g2d.drawString("           "              " +   , 10, y);
 //                        y += yShift;

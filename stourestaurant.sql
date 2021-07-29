@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2021 at 12:04 AM
+-- Generation Time: Jul 29, 2021 at 03:18 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -60,8 +60,8 @@ CREATE TABLE `tb_food` (
 --
 
 INSERT INTO `tb_food` (`food_id`, `food_name`, `food_cost`) VALUES
-('F01', 'Food1', 50),
-('F02', 'Food2', 60);
+('F01', 'Pad Thai  ', 50),
+('F02', 'Pad See Ew', 60);
 
 -- --------------------------------------------------------
 
@@ -80,9 +80,8 @@ CREATE TABLE `tb_member` (
 --
 
 INSERT INTO `tb_member` (`mem_id`, `mem_name`, `mem_phone`) VALUES
-('A01', 'Test Member', '01-222-3333'),
-('A02', 'Test Again', '02-111-8888'),
-('A03', 'ทดลอง ใส่ข้อมูล', '04-444-4455');
+('A01', 'สมาชิก คนแรก', '01-222-3333'),
+('A02', 'สมาชิก คนที่สอง', '02-111-8888');
 
 -- --------------------------------------------------------
 
@@ -123,9 +122,8 @@ CREATE TABLE `tb_staff` (
 --
 
 INSERT INTO `tb_staff` (`staff_id`, `staff_name`, `staff_phone`, `staff_pos`) VALUES
-('S01', 'Test Man', '01-111-1155', 'Test'),
-('S02', 'Test Man2', '01-111-1177', 'Test2'),
-('S03', 'Test Man3', '01-111-1111', 'Test3');
+('S01', 'เอกราช มากมี', '01-111-1111', 'เจ้าของร้าน'),
+('S02', 'มณโท มีงานทำ', '01-111-1177', 'พ่อครัว');
 
 -- --------------------------------------------------------
 
